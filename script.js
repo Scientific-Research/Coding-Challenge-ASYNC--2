@@ -79,6 +79,7 @@ const wait = (seconds) => {
   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 };
 
+//////////// MY ANSWER ///////////////////////
 // wait(2)
 //   .then(() => {
 //     createImage("./img/img-1.jpg");
@@ -103,7 +104,9 @@ const wait = (seconds) => {
 //   .then(() => {
 //     img.style.display = "none";
 //   });
+//////////// MY ANSWER ///////////////////////
 
+//////////// CHAT GPT ANSWER ///////////////////////
 let currentImg;
 createImage("./img/img-1.jpg")
   .then((img) => {
@@ -132,3 +135,4 @@ createImage("./img/img-1.jpg")
   .catch((err) => {
     console.error("Error loading image:", err);
   });
+//////////// CHAT GPT ANSWER ///////////////////////
