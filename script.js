@@ -35,8 +35,6 @@ PART 1
 If this part is too tricky for you, just watch the first part of the solution.
 */
 
-// const img = document.querySelector("img");
-
 const createImage = (imgPath) => {
   return new Promise((resolve, reject) => {
     img = document.createElement("img");
