@@ -117,14 +117,17 @@ const wait = (seconds) => {
 //////////// MY ANSWER ///////////////////////
 
 //////////// CHAT GPT ANSWER ///////////////////////
-let currentImg;
+let currentImg; // we need a global variable here!
+
 createImage("./img/img-1.jpg")
   .then((img) => {
     currentImg = img;
     return wait(2);
   })
+  // wait() doesn't resolve anything, it means it doesn't return anything, therefore, we don't have any parameter for callback function in then() below!
   .then(() => {
-    currentImg.style.display = "none";
+    // We don't have any access to the img parameter here, that's why we use a global variable for that => currentImg
+    currentImg.style.display = "none"; // hide the first image
     return createImage("./img/img-2.jpg");
   })
   .then((img) => {
@@ -132,7 +135,7 @@ createImage("./img/img-1.jpg")
     return wait(2);
   })
   .then(() => {
-    currentImg.style.display = "none";
+    currentImg.style.display = "none"; // hide the second image
     return createImage("./img/img-3.jpg");
   })
   .then((img) => {
@@ -140,9 +143,9 @@ createImage("./img/img-1.jpg")
     return wait(2);
   })
   .then(() => {
-    currentImg.style.display = "none";
+    currentImg.style.display = "none"; // hide the third image
   })
   .catch((err) => {
-    console.error("Error loading image:", err);
+    console.error("Error loading image:", err.message);
   });
 //////////// CHAT GPT ANSWER ///////////////////////
