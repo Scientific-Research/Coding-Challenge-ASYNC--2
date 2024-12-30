@@ -121,17 +121,19 @@ let currentImg; // we need a global variable here!
 
 createImage("./img/img-1.jpg")
   .then((img) => {
-    currentImg = img;
+    currentImg = img; // to hide it in the next step!
+    console.log("Image 1 loaded!");
     return wait(2);
   })
   // wait() doesn't resolve anything, it means it doesn't return anything, therefore, we don't have any parameter for callback function in then() below!
   .then(() => {
     // We don't have any access to the img parameter here, that's why we use a global variable for that => currentImg
     currentImg.style.display = "none"; // hide the first image
-    return createImage("./img/img-2.jpg");
+    return createImage("./img/img-2.jpg"); // return a new promise which is img and we receive this img below at the next then()!
   })
   .then((img) => {
-    currentImg = img;
+    currentImg = img; // to hide it in the next step!
+    console.log("Image 2 loaded!");
     return wait(2);
   })
   .then(() => {
@@ -139,7 +141,8 @@ createImage("./img/img-1.jpg")
     return createImage("./img/img-3.jpg");
   })
   .then((img) => {
-    currentImg = img;
+    currentImg = img; // to hide it in the next step!
+    console.log("Image 3 loaded!");
     return wait(2);
   })
   .then(() => {
