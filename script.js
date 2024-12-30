@@ -35,10 +35,9 @@ PART 1
 If this part is too tricky for you, just watch the first part of the solution.
 */
 
-let img;
 const createImage = (imgPath) => {
   return new Promise((resolve, reject) => {
-    img = document.createElement("img");
+    const img = document.createElement("img");
 
     // img.setAttribute("src", imgPath); // OR set the src attribute directly:
     img.src = imgPath;
@@ -80,27 +79,56 @@ const wait = (seconds) => {
   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 };
 
-wait(2)
-  .then(() => {
-    createImage("./img/img-1.jpg");
+// wait(2)
+//   .then(() => {
+//     createImage("./img/img-1.jpg");
+//     return wait(2);
+//   })
+//   .then(() => {
+//     img.style.display = "none";
+//     return wait(2);
+//   })
+//   .then(() => {
+//     createImage("./img/img-2.jpg");
+//     return wait(2);
+//   })
+//   .then(() => {
+//     img.style.display = "none";
+//     return wait(2);
+//   })
+//   .then(() => {
+//     createImage("./img/img-3.jpg");
+//     return wait(2);
+//   })
+//   .then(() => {
+//     img.style.display = "none";
+//   });
+
+let currentImg;
+createImage("./img/img-1.jpg")
+  .then((img) => {
+    currentImg = img;
     return wait(2);
   })
   .then(() => {
-    img.style.display = "none";
+    currentImg.style.display = "none";
+    return createImage("./img/img-2.jpg");
+  })
+  .then((img) => {
+    currentImg = img;
     return wait(2);
   })
   .then(() => {
-    createImage("./img/img-2.jpg");
+    currentImg.style.display = "none";
+    return createImage("./img/img-3.jpg");
+  })
+  .then((img) => {
+    currentImg = img;
     return wait(2);
   })
   .then(() => {
-    img.style.display = "none";
-    return wait(2);
+    currentImg.style.display = "none";
   })
-  .then(() => {
-    createImage("./img/img-3.jpg");
-    return wait(2);
-  })
-  .then(() => {
-    img.style.display = "none";
+  .catch((err) => {
+    console.error("Error loading image:", err);
   });
