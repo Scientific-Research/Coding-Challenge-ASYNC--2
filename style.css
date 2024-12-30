@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background: linear-gradient(to right bottom, rgb(0, 255, 0), rgb(255, 0, 0));
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #fff;
+  font-size: 7rem;
+}
