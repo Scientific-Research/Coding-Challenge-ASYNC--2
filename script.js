@@ -45,9 +45,13 @@ const createImage = (imgPath) => {
     console.log(img.src); // Log the image source
 
     img.addEventListener("load", () => {
-      // img.classList.add("images");
+      // img.classList.add("images"); This is false, because images is parent and we can not add img as child to the parent!
+
       document.querySelector(".images").appendChild(img); // Append to the DOM
-      // img.classList.add("images").appendChild(img); // Append to the DOM
+
+      // img.classList.add("images").appendChild(img); // Append to the DOM -- This is false too because of the same above reason!
+
+      // load event means loading the image was successful and we have to mark it as a successfull Promise using resolve(img)
       resolve(img); // Resolve the promise with the image element
     });
 
