@@ -38,20 +38,20 @@ If this part is too tricky for you, just watch the first part of the solution.
 const createImage = (imgPath) => {
   return new Promise((resolve, reject) => {
     img = document.createElement("img");
-    // img.classList.add("src");
+
     img.setAttribute("src", imgPath);
     console.log(img.getAttribute("src")); // ./img
+
+    img.addEventListener("load", () => {
+      img.classList.add("images");
+    });
     (img) => resolve(img);
     (err) => reject(err);
   });
 };
 
 const imagePath = "./img";
+
 createImage(imagePath)
-  .then((img) => {
-    return img.addEventListener("load", () => {
-      img.classList.add("images");
-    });
-  })
   .then((img) => console.log(img))
   .catch((err) => console.error(err));
