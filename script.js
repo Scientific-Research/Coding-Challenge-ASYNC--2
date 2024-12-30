@@ -42,11 +42,12 @@ const createImage = (imgPath) => {
     // img.setAttribute("src", imgPath); // OR set the src attribute directly:
     img.src = imgPath;
     // console.log(img.getAttribute("src")); // OR Log the image source directly:
-    console.log(img.src);
+    console.log(img.src); // Log the image source
 
     img.addEventListener("load", () => {
       // img.classList.add("images");
       document.querySelector(".images").appendChild(img); // Append to the DOM
+      // img.classList.add("images").appendChild(img); // Append to the DOM
       resolve(img); // Resolve the promise with the image element
     });
 
@@ -58,7 +59,21 @@ const createImage = (imgPath) => {
   });
 };
 
-const imagePath = "./img";
+/* 
+PART 2
+2. Consume the promise using .then and also add an error handler;
+
+3. After the image has loaded, pause execution for 2 seconds using the wait function we created earlier; 
+
+4. After the 2 seconds have passed, hide the current image (set display to 'none'), and load a second image (HINT: Use the image element returned by the createImage promise to hide the current image. You will need a global variable for that 😉)
+
+5. After the second image has loaded, pause execution for 2 seconds again;
+
+6. After the 2 seconds have passed, hide the current image!
+
+TEST DATA: Images are in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
+*/
+const imagePath = "./img/img-1.jpg";
 
 createImage(imagePath)
   .then((img) => console.log(img))
