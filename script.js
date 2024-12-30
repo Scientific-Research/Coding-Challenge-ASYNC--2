@@ -75,6 +75,11 @@ TEST DATA: Images are in the img folder. Test the error handler by passing a wro
 */
 const imagePath = "./img/img-1.jpg";
 
-createImage(imagePath)
-  .then((img) => console.log(img))
-  .catch((err) => console.error(err));
+const wait = (seconds) => {
+  return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+};
+
+wait(2).then(() => createImage(imagePath));
+// createImage(imagePath)
+// .then((img) => console.log(img))
+// .catch((err) => console.error(err));
