@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to right bottom, rgb(0, 255, 0), rgb(255, 0, 0));
+  background: linear-gradient(to left top, rgb(0, 150, 0), rgb(0, 0, 255));
   background-repeat: no-repeat;
   height: 100vh;
   display: flex;
