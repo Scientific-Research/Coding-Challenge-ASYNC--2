@@ -37,16 +37,24 @@ If this part is too tricky for you, just watch the first part of the solution.
 
 const createImage = (imgPath) => {
   return new Promise((resolve, reject) => {
-    img = document.createElement("img");
+    const img = document.createElement("img");
 
-    img.setAttribute("src", imgPath);
-    console.log(img.getAttribute("src")); // ./img
+    // img.setAttribute("src", imgPath); // OR set the src attribute directly:
+    img.src = imgPath;
+    // console.log(img.getAttribute("src")); // OR Log the image source directly:
+    console.log(img.src);
 
     img.addEventListener("load", () => {
-      img.classList.add("images");
+      // img.classList.add("images");
+      document.querySelector(".images").appendChild(img); // Append to the DOM
+      resolve(img); // Resolve the promise with the image element
     });
-    (img) => resolve(img);
-    (err) => reject(err);
+
+    img.addEventListener("error", (err) => {
+      reject(new Error("Image failed to load: " + err.message)); // Reject the promise on error
+    });
+    // (img) => resolve(img);
+    // (err) => reject(err);
   });
 };
 
