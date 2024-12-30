@@ -82,19 +82,25 @@ const wait = (seconds) => {
 
 wait(2)
   .then(() => {
-    // createImage(imagePath);
     createImage("./img/img-1.jpg");
     return wait(2);
   })
   .then(() => {
+    img.style.display = "none";
+    return wait(2);
+  })
+  .then(() => {
     createImage("./img/img-2.jpg");
+    return wait(2);
+  })
+  .then(() => {
     img.style.display = "none";
     return wait(2);
   })
   .then(() => {
     createImage("./img/img-3.jpg");
+    return wait(2);
+  })
+  .then(() => {
     img.style.display = "none";
   });
-// createImage(imagePath)
-// .then((img) => console.log(img))
-// .catch((err) => console.error(err));
