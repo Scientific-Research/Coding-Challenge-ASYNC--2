@@ -48,6 +48,12 @@ const createImage = (imgPath) => {
       // img.classList.add("images"); This is false, because images is parent and we can not add img as child to the parent!
 
       document.querySelector(".images").appendChild(img); // Append to the DOM
+      // After appending, this is what is forming is HTML:
+      /* 
+      <div class="images">
+          <img src="" alt=""> // img is Child of the div element with images class which is appended to that!
+      </div>
+      */
 
       // img.classList.add("images").appendChild(img); // Append to the DOM -- This is false too because of the same above reason!
 
