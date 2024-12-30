@@ -35,9 +35,10 @@ PART 1
 If this part is too tricky for you, just watch the first part of the solution.
 */
 
+let img;
 const createImage = (imgPath) => {
   return new Promise((resolve, reject) => {
-    const img = document.createElement("img");
+    img = document.createElement("img");
 
     // img.setAttribute("src", imgPath); // OR set the src attribute directly:
     img.src = imgPath;
@@ -73,13 +74,27 @@ PART 2
 
 TEST DATA: Images are in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
 */
-const imagePath = "./img/img-1.jpg";
+// const imagePath = "./img/img-1.jpg";
 
 const wait = (seconds) => {
   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 };
 
-wait(2).then(() => createImage(imagePath));
+wait(2)
+  .then(() => {
+    // createImage(imagePath);
+    createImage("./img/img-1.jpg");
+    return wait(2);
+  })
+  .then(() => {
+    createImage("./img/img-2.jpg");
+    img.style.display = "none";
+    return wait(2);
+  })
+  .then(() => {
+    createImage("./img/img-3.jpg");
+    img.style.display = "none";
+  });
 // createImage(imagePath)
 // .then((img) => console.log(img))
 // .catch((err) => console.error(err));
