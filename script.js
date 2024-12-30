@@ -26,3 +26,9 @@ TEST DATA: Images are in the img folder. Test the error handler by passing a wro
 
 GOOD LUCK 😀
 */
+
+const createImage = (imgPath) =>{
+  return new Promise = (resolve,reject)=>{
+    const src = document.createElement('img')
+  }
+}
